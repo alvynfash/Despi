@@ -1,5 +1,7 @@
-export 'search_screen.dart';
-export 'splash_screen.dart';
-export 'welcome_screen.dart';
 
-export 'utils/app_box_decoration.dart';
+export 'splash_screen.dart';
+export 'onboarding_screen.dart';
+
+export '../app/app_screen.dart';
+export '../signup/signup_screen.dart';
+export '../search/search_screen.dart';

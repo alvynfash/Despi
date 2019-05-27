@@ -1,64 +1,27 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'screen.dart';
+import 'package:despi/screens/utils/util.dart';
 
 class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
-    return Material(
-      child: Container(
-        alignment: Alignment.topCenter,
-        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
-        decoration: appBoxDecoration(brushColor: Colors.red.shade500),
-        child: Column(
-          children: <Widget>[
-            // _buildLogo(),
-            _buildAltLogo(),
-            _buildText(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLogo() {
-    return ClipOval(
-      child: Container(
-        height: 90,
-        width: 90,
-        color: Colors.white,
-        child: Center(
-          child: ClipOval(
-            child: Container(
-              height: 70,
-              width: 70,
-              color: Colors.black,
-              child: Center(
-                child: ClipOval(
-                  child: Container(
-                    height: 45,
-                    width: 45,
-                    color: Colors.white,
-                    child: Center(
-                      child: ClipOval(
-                        child: Container(
-                          height: 20,
-                          width: 20,
-                          color: Colors.red,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+    return Scaffold(
+      body: Material(
+        child: Container(
+          alignment: Alignment.topCenter,
+          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 4),
+          decoration: appBoxDecoration(brushColor: Colors.red[500]),
+          child: Column(
+            children: <Widget>[
+              _buildLogo(),
+              _buildText(),
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget _buildAltLogo() {
+  Widget _buildLogo() {
     return Stack(
       children: <Widget>[
         ClipOval(
