@@ -13,6 +13,7 @@
 #import "GoogleMapCircleController.h"
 #import "GoogleMapController.h"
 #import "GoogleMapMarkerController.h"
+#import "GoogleMapPolygonController.h"
 #import "GoogleMapPolylineController.h"
 #import "GoogleMapsPlugin.h"
 #import "JsonConversions.h"

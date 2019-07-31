@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EBD37D04A5127BB417D28F4F1E5E9EE6"
+               BlueprintIdentifier = "54DF55765877148463F27AB08B4C8DB5"
                BlueprintName = "google_maps_flutter"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "google_maps_flutter.framework">

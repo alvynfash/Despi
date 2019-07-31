@@ -1,13 +1,17 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:despi/repos/repo.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'bloc.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  final UserRepository userRepository;
 
   AppBloc() : userRepository = UserRepository();
+  UserRepository userRepository;
+  String _displayName;
+  Position _initialPosition;
+  Placemark _initialPlacemark;
 
   @override
   AppState get initialState => Uninitialized();
@@ -33,15 +37,28 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   Stream<AppState> _mapAppStartedToState() async* {
-    await Future.delayed(Duration(seconds: 2));
     final isSignedIn = await userRepository.isSignedIn();
     if (!isSignedIn) {
       yield WaitingOnboarding();
       return;
     }
 
-    final user = await userRepository.getUser();
-    yield user.isNotEmpty ? Authenticated(user) : WaitingOnboarding();
+    try {
+      _initialPosition = await Geolocator().getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.bestForNavigation);
+
+      var reversePosition =
+          await Geolocator().placemarkFromPosition(_initialPosition);
+      _initialPlacemark = reversePosition.first;
+    } catch (e) {} finally {
+      _displayName = await userRepository.getUser();
+      yield _displayName.isNotEmpty
+          ? Authenticated(
+              userRepository: userRepository,
+              initialPosition: _initialPosition,
+              initialPlacemark: _initialPlacemark)
+          : WaitingOnboarding();
+    }
   }
 
   Stream<AppState> _mapAppOnboardedToState() async* {
@@ -49,9 +66,20 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   Stream<AppState> _mapAppSignedUpToState() async* {
-    //   String username, String mobile) async* {
-    // await _userRepository.signUp(username: username, mobile: mobile);
-    yield Authenticated(await userRepository.getUser());
+    try {
+      _initialPosition = await Geolocator().getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.bestForNavigation);
+
+      var reversePosition =
+          await Geolocator().placemarkFromPosition(_initialPosition);
+      _initialPlacemark = reversePosition.first;
+    } catch (e) {} finally {
+      // _displayName = await _userRepository.getUser();
+      yield Authenticated(
+          userRepository: userRepository,
+          initialPosition: _initialPosition,
+          initialPlacemark: _initialPlacemark);
+    }
   }
 
   Stream<AppState> _mapLoggedOutToState() async* {

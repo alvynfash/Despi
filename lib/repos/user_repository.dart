@@ -48,4 +48,13 @@ class UserRepository {
         return "";
     });
   }
+
+  Future<String> getMobile() async {
+    return await prefs.then((onValue) {
+      if (onValue.containsKey(mobileKey))
+        return onValue.getString(mobileKey);
+      else
+        return "";
+    });
+  }
 }

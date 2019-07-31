@@ -18,13 +18,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   void initState() {
     _pages = <Widget>[
       Container(
-          // color: Colors.blue,
+          color: Colors.yellow,
           ),
       Container(
-          // color: Colors.red,
+          color: Colors.orange,
           ),
       Container(
-          // color: Colors.green,
+          // color: Colors.redAccent,
           ),
     ];
 

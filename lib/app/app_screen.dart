@@ -25,19 +25,38 @@ class MyAppState extends State<MyApp> {
     return BlocProvider(
       bloc: _authenticationBloc,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: BlocListener(
           bloc: _authenticationBloc,
           listener: (context, AppState state) {
             switch (state.runtimeType) {
               case WaitingOnboarding:
-                return navigateTo(context, OnboardingScreen());
+                return navigateTo(context, onboardingScreenRoute);
               case Unauthenticated:
-                return navigateTo(context, SignupScreen());
+                return setAsMain(context, signupScreenRoute);
               case Authenticated:
-                return navigateTo(context, SignupScreen());
+                return setAsMain(context, searchScreenRoute);
             }
           },
           child: SplashScreen(),
+        ),
+        routes: <String, WidgetBuilder>{
+          splashScreenRoute: (BuildContext context) => SplashScreen(),
+          onboardingScreenRoute: (BuildContext context) => OnboardingScreen(),
+          signupScreenRoute: (BuildContext context) => SignupScreen(),
+          searchScreenRoute: (BuildContext context) => SearchScreen(),
+          placesScreenRoute: (BuildContext context) => PlacesScreen(),
+          // '/onboardingScreen': (BuildContext context) => OnboardingScreen(),
+        },
+        // onGenerateRoute: ,
+        theme: ThemeData.light().copyWith(
+          primaryColor: Colors.white,
+          primaryColorDark: Colors.black,
+          accentColor: Colors.red,
+          // primaryColorLight: Colors.red[200],
+          primaryTextTheme: ThemeData.light()
+              .primaryTextTheme
+              .copyWith(title: TextStyle(color: Colors.black.withOpacity(.7))),
         ),
       ),
     );

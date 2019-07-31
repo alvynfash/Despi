@@ -1,5 +1,8 @@
-geolocator=/Users/afasuyi/Library/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/geolocator-4.0.3/
+cloud_firestore=/Users/afasuyi/Library/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.8.2+3/
+connectivity=/Users/afasuyi/Library/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/connectivity-0.4.3+2/
+firebase_core=/Users/afasuyi/Library/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.2.5+1/
+geolocator=/Users/afasuyi/Library/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/geolocator-5.0.0/
 google_api_availability=/Users/afasuyi/Library/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/google_api_availability-2.0.1/
-google_maps_flutter=/Users/afasuyi/Library/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-0.5.13/
+google_maps_flutter=/Users/afasuyi/Library/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-0.5.15+1/
 location_permissions=/Users/afasuyi/Library/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/location_permissions-2.0.1/
-shared_preferences=/Users/afasuyi/Library/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.2+1/
+shared_preferences=/Users/afasuyi/Library/Developer/Flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.3+1/

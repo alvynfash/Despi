@@ -1,4 +1,6 @@
+import 'package:despi/repos/repo.dart';
 import 'package:equatable/equatable.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:meta/meta.dart';
 
 @immutable
@@ -22,12 +24,20 @@ class WaitingOnboarding extends AppState {
 }
 
 class Authenticated extends AppState {
-  final String displayName;
+  final UserRepository userRepository;
+  final Position initialPosition;
+  final Placemark initialPlacemark;
 
-  Authenticated(this.displayName) : super([displayName]);
+  Authenticated({this.userRepository, this.initialPosition, this.initialPlacemark})
+      : super([userRepository, initialPosition, initialPlacemark]);
 
   @override
-  String toString() => 'Authenticated { displayName: $displayName }';
+  String toString() {
+    return '''Authenticated {
+    displinitialPositionayName: $initialPosition, 
+    initialPlacemark: $initialPlacemark, 
+    }''';
+  }
 }
 
 class Unauthenticated extends AppState {

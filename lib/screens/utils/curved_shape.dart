@@ -39,16 +39,10 @@ class _MyPainter extends CustomPainter {
     final avatarLeftPointY = circleCenter.dy + AVATAR_RADIUS * sin(arcStartAngle);
     Offset avatarLeftPoint = Offset(avatarLeftPointX, avatarLeftPointY); // the left point of the arc
 
-    final arcEndAngle = -5 / 180 * pi;
-    final avatarRightPointX = circleCenter.dx + AVATAR_RADIUS * cos(arcEndAngle);
-    final avatarRightPointY = circleCenter.dy + AVATAR_RADIUS * sin(arcEndAngle);
-    Offset avatarRightPoint = Offset(avatarRightPointX, avatarRightPointY); // the right point of the arc
-
     Path path = Path()
       ..moveTo(topLeft.dx, topLeft.dy) // this move isn't required since the start point is (0,0)
       ..lineTo(bottomLeft.dx, bottomLeft.dy)
       ..quadraticBezierTo(leftCurveControlPoint.dx, leftCurveControlPoint.dy, avatarLeftPoint.dx, avatarLeftPoint.dy)
-      // ..arcToPoint(avatarRightPoint, radius: Radius.circular(AVATAR_RADIUS))
       ..quadraticBezierTo(rightCurveControlPoint.dx, rightCurveControlPoint.dy, bottomRight.dx, bottomRight.dy)
       ..lineTo(topRight.dx, topRight.dy)
       ..close();
